@@ -1,0 +1,8 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+yuumi-dc6a7-firebase-adminsdk-24o7p-6b16c6b017.json

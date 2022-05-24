@@ -30,5 +30,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>{{ sumData }}</main>
+  <main class="px-10">
+    <div class="h-44 z-10 text-red py-4 flex">
+      <div class="flex flex-col items-center">
+        <img
+          class="w-16 h-16 rounded-full"
+          :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${sumData.profileIconId}.jpg`"
+          alt=""
+        />
+        <span>189</span>
+      </div>
+
+      <h1 class="text-lg ml-6">{{ sumData.name }}</h1>
+    </div>
+    <!-- <div>
+      {{ sumData }}
+    </div> -->
+  </main>
 </template>

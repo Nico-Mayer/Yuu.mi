@@ -5,7 +5,7 @@ const apps = getApps()
 
 if (!apps.length) {
   initializeApp({
-    credential: cert("yuumi-dc6a7-firebase-adminsdk-24o7p-6b16c6b017.json"),
+    credential: cert("firestoreCert.json"),
   })
 }
 

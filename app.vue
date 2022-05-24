@@ -23,7 +23,7 @@ async function findSummoner(name) {
 </script>
 
 <template>
-  <div class="flex w-screen h-screen flex-col font-mono">
+  <div class="flex w-screen h-screen flex-col font-mono bg-bg0 text-font0">
     <Navbar @findSum="findSummoner" />
     <NuxtPage />
   </div>

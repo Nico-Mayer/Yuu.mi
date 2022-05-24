@@ -1,4 +1,4 @@
-import { getFirestore } from "firebase-admin/firestore";
+/* import { getFirestore } from "firebase-admin/firestore";
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 
 const apps = getApps();
@@ -17,3 +17,4 @@ export default async (req) => {
   });
   return summonersData;
 };
+ */

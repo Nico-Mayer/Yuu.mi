@@ -12,6 +12,7 @@ async function findSummoner(name) {
   const url = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}?api_key=${apiKey}`
   const { data, error } = await useFetch(url, { pick: ["id", "name"] })
   sumData.value = data.value
+  console.log(sumData)
   if (!error.value) {
     router.push(`/sumPage-${sumData.value.id}`)
   } else {
@@ -23,7 +24,7 @@ async function findSummoner(name) {
 </script>
 
 <template>
-  <div class="flex w-screen h-screen flex-col font-mono bg-bg0 text-font0">
+  <div class="font-mono bg-bg0 text-font0 h-screen">
     <Navbar @findSum="findSummoner" />
     <NuxtPage />
   </div>

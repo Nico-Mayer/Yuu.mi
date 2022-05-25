@@ -23,6 +23,7 @@ module.exports = {
         gruvBlue: "#458588",
         gruvRedM: "#fb4934",
         gruvRed: "#cc241d",
+        gruvSilver: "#d5c4a1",
       },
     },
   },

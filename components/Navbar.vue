@@ -15,7 +15,7 @@ function emitName() {
 
 <template>
   <main
-    class="flex max-w-7xl items-center h-24 py-4 border-b border-bg0h justify-between mx-auto"
+    class="flex max-w-7xl items-center h-24 py-4 border-b border-bg0h justify-between mx-auto px-4"
   >
     <h1 class="font-bold text-4xl cursor-pointer" @click="goHome">
       Yuu<span class="text-gruvAquaM">.mi</span>

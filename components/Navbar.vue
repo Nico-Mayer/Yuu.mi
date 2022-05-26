@@ -15,14 +15,14 @@ function emitName() {
 
 <template>
   <main
-    class="flex max-w-7xl items-center h-24 py-4 border-b border-bg0h justify-between mx-auto px-4"
+    class="flex max-w-7xl items-center h-24 py-4 justify-between mx-auto px-4"
   >
     <h1 class="font-bold text-4xl cursor-pointer" @click="goHome">
       Yuu<span class="text-gruvAquaM">.mi</span>
     </h1>
     <form @submit.prevent="emitName">
       <input
-        class="bg-bg0 border border-bg0h py-1 px-4 outline-none caret placeholder-font0"
+        class="bg-bg0 border border-bg0h py-1 px-4 outline-none caret placeholder-font0 placeholder-opacity-60"
         v-model="name"
         placeholder="Summoner Name..."
         type="text"

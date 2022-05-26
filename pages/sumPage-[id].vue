@@ -4,6 +4,8 @@ const router = useRouter()
 const sumId = ref(useRoute().params.id)
 const apiKey = import.meta.env.VITE_API_KEY
 const riotUrl = "https://euw1.api.riotgames.com/lol/"
+const activeTab = ref("matchHistory")
+// API Calls
 const { data: sumData, error: sumDataErr } = await useFetch(
   `${riotUrl}summoner/v4/summoners/${sumId.value}?api_key=${apiKey}`
 )
@@ -13,6 +15,11 @@ const { data: rankData, error: rankDataErr } = await useFetch(
 const { data: firestoreData, error: firestoreDataErr } = await useFetch(
   `/api/checkSum/${sumId.value}`
 )
+const matchIdsCallString = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${sumData.value.puuid}/ids?start=0&count=10&api_key=${apiKey}`
+const { data: matchHistIds, error: matchHistIdsErr } = await useFetch(
+  matchIdsCallString
+)
+const matchHist = ref(getMatchHist(matchHistIds.value))
 
 // Functions
 function checkForFetchError() {
@@ -35,10 +42,30 @@ function checkForFetchError() {
   if (rankDataErr.value) {
     console.log("Error on rankData Load!")
   }
+  if (!matchHistIdsErr.value) {
+    console.log("No Error on matchHistIds Load!")
+  }
+  if (matchHistIdsErr.value) {
+    console.log("Error on matchHistIds Load!")
+  }
 }
-
 function addSumToDb() {
   //const { data } = useFetch(`/api/addSum/${"test"}`)
+}
+function changeTab(name) {
+  activeTab.value = name
+}
+async function getMatchHist(matchIds) {
+  let matchHistory = []
+  for (const id of matchIds) {
+    const { data: match, error: matchLoadErr } = await useFetch(
+      `https://europe.api.riotgames.com/lol/match/v5/matches/${id}?api_key=${apiKey}`
+    )
+    if (!matchLoadErr.value) {
+      matchHistory.push(match.value.info)
+    }
+  }
+  return matchHistory
 }
 
 // Hooks
@@ -50,31 +77,19 @@ onMounted(() => {
 <template>
   <main class="mx-auto max-w-7xl flex flex-1 px-4" v-if="sumData">
     <Sidebar :sumData="sumData" :rankData="rankData" />
+    <div class="flex flex-col w-full">
+      <Topbar
+        :sumData="sumData"
+        :firestoreData="firestoreData"
+        :activeTab="activeTab"
+        @changeTab="changeTab"
+      />
+      <MatchHistoryTab
+        v-if="activeTab == 'matchHistory'"
+        :matchHist="matchHist"
+      />
 
-    <div class="w-full flex flex-col">
-      <div class="flex justify-between w-full items-center p-8">
-        <div class="text-xl text-gruvAquaM font-semibold">
-          &lt
-          <span class="text-font0">{{ sumData.name }}</span>
-          <span class="text-gruvBlue"> @euw</span>
-          /&gt
-        </div>
-        <div class="flex items-center">
-          <button
-            class="flex mr-2 border border-bg0h px-2 items-center space-x-4"
-          >
-            <div>update</div>
-            <div
-              :class="
-                (firestoreData ? 'bg-gruvAquaM ' : 'bg-gruvRedM ') +
-                ' w-2 opacity-70 h-2 rounded-full animate-pulse'
-              "
-            />
-          </button>
-        </div>
-      </div>
-
-      <div class="flex flex-1 px-4">Content</div>
+      <div v-if="activeTab == 'comments'">{{ activeTab }}</div>
     </div>
   </main>
 </template>

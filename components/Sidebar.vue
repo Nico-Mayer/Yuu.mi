@@ -55,112 +55,142 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="flex flex-col items-center border-r border-bg0h px-8 pt-8">
+  <main class="flex flex-col items-center border-r border-bg0h px-2 pt-8 w-80">
     <img
       class="w-20 h-20 rounded-full mb-8"
       :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${sumData.profileIconId}.jpg`"
       alt=""
     />
-    <section class="text-lg whitespace-nowrap">
-      <div class="flex flex-col">
-        <div class="">
+
+    <div class="text-lg">
+      <section class="whitespace-nowrap leading-snug">
+        <p>
           <span>lvl</span>
-          <span class="text-gruvOrangeM">= </span>
+          <span class="text-gruvOrangeM"> = </span>
           <span class="text-gruvPurpleM">{{ sumData.summonerLevel }}</span>
-        </div>
+        </p>
+      </section>
+      <section v-if="soloQData" class="whitespace-nowrap leading-snug">
+        <p>&nbsp;</p>
+        <p>
+          <span>soloQ </span>
+          <span class="text-gruvOrangeM">=</span>
+          <span class="text-gruvRedM"> {</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>rank:</span>
+          <span
+            :class="getRankColor(soloQData.tier) + ` neon${soloQData.tier}`"
+          >
+            "{{ soloQData.tier }} {{ soloQData.rank }}"
+          </span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>lp: </span>
+          <span class="text-gruvPurpleM">{{ soloQData.leaguePoints }}</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>games: </span>
+          <span class="text-gruvPurpleM">
+            {{ soloQData.wins + soloQData.losses }}
+          </span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span> winRate: </span>
+          <span class="text-gruvPurpleM">{{ soloQWinRate }}%</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>w: </span>
+          <span class="text-gruvPurpleM">{{ soloQData.wins }}</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>l: </span>
+          <span class="text-gruvPurpleM">{{ soloQData.losses }}</span>
+        </p>
+        <p>}</p>
+      </section>
 
-        <div class="mt-4">
-          <span>soloQ<span class="text-gruvOrangeM">= </span></span
-          ><span class="text-gruvRedM">{ </span>
-
-          <div v-if="soloQData">
-            <span class="ml-10"
-              >elo:
-              <span :class="getRankColor(soloQData.tier)"
-                >"{{ soloQData.tier }} {{ soloQData.rank }}"<br /></span
-            ></span>
-            <span class="ml-10"
-              >lp:
-              <span class="text-gruvPurpleM">{{ soloQData.leaguePoints }}</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >winRate:
-              <span
-                :class="soloQWinRate > 50 ? 'text-gruvAquaM' : 'text-gruvRedM'"
-                >{{ soloQWinRate }}%</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >games:
-              <span class="text-gruvPurpleM">{{
-                soloQData.wins + soloQData.losses
-              }}</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >win:
-              <span class="text-gruvBlueM hover:text-gruvBlue">{{
-                soloQData.wins
-              }}</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >loose:
-              <span class="text-gruvRedM hover:text-gruvRed">{{
-                soloQData.losses
-              }}</span
-              ><br
-            /></span>
-          </div>
-
-          <span class="text-gruvRedM">}</span>
-        </div>
-
-        <div class="mt-4">
-          <span>flexQ<span class="text-gruvOrangeM">= </span></span>
-          <span class="text-gruvRedM">{ </span>
-          <div v-if="flexQData">
-            <span class="ml-10"
-              >elo:
-              <span :class="getRankColor(flexQData.tier)"
-                >"{{ flexQData.tier }} {{ flexQData.rank }}"</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >lp:
-              <span class="text-gruvPurpleM">{{ flexQData.leaguePoints }}</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >winRate:
-              <span
-                :class="flexQWinRate > 50 ? 'text-gruvAquaM' : 'text-gruvRedM'"
-                >{{ flexQWinRate }}%</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >games:
-              <span class="text-gruvPurpleM">{{
-                flexQData.wins + flexQData.losses
-              }}</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >win: <span class="text-gruvBlueM">{{ flexQData.wins }}</span
-              ><br
-            /></span>
-            <span class="ml-10"
-              >loose: <span class="text-gruvRedM">{{ flexQData.losses }}</span
-              ><br
-            /></span>
-          </div>
-
-          <span class="text-gruvRedM">}</span>
-        </div>
+      <div v-else class="opacity-60">
+        <p>&nbsp;</p>
+        <p>
+          soloQ <span class="text-gruvOrangeM">=</span>
+          <span class="text-gruvRedM"> { }</span>
+        </p>
       </div>
-    </section>
+
+      <section v-if="flexQData" class="whitespace-nowrap leading-snug">
+        <p>&nbsp;</p>
+        <p>
+          <span>flexQ </span>
+          <span class="text-gruvOrangeM">=</span>
+          <span class="text-gruvRedM"> {</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>rank:</span>
+          <span
+            :class="getRankColor(flexQData.tier) + ` neon${flexQData.tier}`"
+          >
+            "{{ flexQData.tier }} {{ flexQData.rank }}"
+          </span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>lp: </span>
+          <span class="text-gruvPurpleM">{{ flexQData.leaguePoints }}</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>games: </span>
+          <span class="text-gruvPurpleM">
+            {{ flexQData.wins + flexQData.losses }}
+          </span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span> winRate: </span>
+          <span class="text-gruvPurpleM">{{ flexQWinRate }}%</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>w: </span>
+          <span class="text-gruvPurpleM">{{ flexQData.wins }}</span>
+        </p>
+        <p class="pl-5 border-l-2 border-bg0h">
+          <span>l: </span>
+          <span class="text-gruvPurpleM">{{ flexQData.losses }}</span>
+        </p>
+        <p class="text-gruvRedM">}</p>
+      </section>
+      <div v-else class="opacity-60">
+        <p>&nbsp;</p>
+        <p>
+          flexQ <span class="text-gruvOrangeM">=</span>
+          <span class="text-gruvRedM"> { }</span>
+        </p>
+      </div>
+    </div>
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.neonIRON {
+  text-shadow: 0 0 7px #665c54;
+}
+.neonSILVER {
+  text-shadow: 0 0 7px #ebdbb2;
+}
+.neonGOLD {
+  text-shadow: 0 0 7px #fabd2f;
+}
+.neonPLATINUM {
+  text-shadow: 0 0 7px #8ec07c;
+}
+.neonDIAMOND {
+  text-shadow: 0 0 7px #458588;
+}
+.neonMASTER {
+  text-shadow: 0 0 7px #cc241d;
+}
+.neonGRANDMASTER {
+  text-shadow: 0 0 7px #cc241d;
+}
+.neonCHALLENGER {
+  text-shadow: 0 0 7px #cc241d;
+}
+</style>

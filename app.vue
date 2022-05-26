@@ -26,7 +26,9 @@ async function findSummoner(name) {
   <Head>
     <Title>Yuu.mi</Title>
   </Head>
-  <div class="font-mono bg-bg0 text-font0 h-screen">
+  <div
+    class="font-mono text-font0 h-screen outline outline-offset-[-17px] outline-2 outline-bg0h p-4"
+  >
     <Navbar @findSum="findSummoner" />
     <NuxtPage />
   </div>

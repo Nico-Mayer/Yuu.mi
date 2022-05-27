@@ -87,6 +87,7 @@ onMounted(() => {
       <MatchHistoryTab
         v-if="activeTab == 'matchHistory'"
         :matchHist="matchHist"
+        :sumId="sumId"
       />
 
       <div v-if="activeTab == 'comments'">{{ activeTab }}</div>

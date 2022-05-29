@@ -5,6 +5,7 @@ const sumId = ref(useRoute().params.id)
 const apiKey = import.meta.env.VITE_API_KEY
 const riotUrl = "https://euw1.api.riotgames.com/lol/"
 const activeTab = ref("matchHistory")
+
 // API Calls
 const { data: sumData, error: sumDataErr } = await useFetch(
   `${riotUrl}summoner/v4/summoners/${sumId.value}?api_key=${apiKey}`

@@ -107,7 +107,7 @@ onMounted(() => {
           <span>l: </span>
           <span class="text-gruvPurpleM">{{ soloQData.losses }}</span>
         </p>
-        <p>}</p>
+        <p class="text-gruvRedM">}</p>
       </section>
 
       <div v-else class="opacity-60">

@@ -11,6 +11,7 @@ const apiKey = import.meta.env.VITE_API_KEY
 async function findSummoner(name) {
   const url = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}?api_key=${apiKey}`
   const { data, error } = await useFetch(url, { pick: ["id", "name"] })
+
   sumData.value = data.value
   if (!error.value) {
     router.push(`/sumPage-${sumData.value.id}`)
@@ -27,7 +28,7 @@ async function findSummoner(name) {
     <Title>Yuu.mi</Title>
   </Head>
   <div
-    class="font-mono text-font0 h-screen outline outline-offset-[-17px] outline-2 outline-bg0h p-4"
+    class="font-mono text-font0 outline outline-offset-[-17px] outline-2 outline-bg0h p-4 min-h-screen"
   >
     <Navbar @findSum="findSummoner" />
     <NuxtPage />

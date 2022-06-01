@@ -68,9 +68,9 @@ function getQType() {
 
 <template>
   <main
-    :class="`flex border-l-2 p-2 ${
-      win ? 'border-gruvBlue' : 'border-gruvRed'
-    } border`"
+    :class="`flex px-4 py-2 justify-between ${
+      win ? 'border-gruvBlue/50' : 'border-gruvRed/50'
+    } hover:opacity-100 border-l`"
   >
     <div class="mr-4">
       <p
@@ -99,7 +99,7 @@ function getQType() {
           :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${currentSum.championId}.png`"
           alt="#"
         />
-        <img src="" alt="">
+        <img src="" alt="" />
       </div>
 
       <p>
@@ -113,12 +113,50 @@ function getQType() {
         <span>/{{ currentSum.assists }}</span>
       </p>
     </div>
+    <div class="grid grid-cols-3 items-center">
+      <img
+        :src="`http://ddragon.leagueoflegends.com/cdn/12.10.1/img/item/${currentSum.item0}.png`"
+        alt=""
+        class="w-8 h-8 rounded-lg"
+      />
+      <img
+        :src="`http://ddragon.leagueoflegends.com/cdn/12.10.1/img/item/${currentSum.item1}.png`"
+        alt=""
+        class="w-8 h-8 rounded-lg"
+      />
+      <img
+        :src="`http://ddragon.leagueoflegends.com/cdn/12.10.1/img/item/${currentSum.item2}.png`"
+        alt=""
+        class="w-8 h-8 rounded-lg"
+      />
+      <img
+        :src="`http://ddragon.leagueoflegends.com/cdn/12.10.1/img/item/${currentSum.item3}.png`"
+        alt=""
+        class="w-8 h-8 rounded-lg"
+      />
+      <img
+        :src="`http://ddragon.leagueoflegends.com/cdn/12.10.1/img/item/${currentSum.item4}.png`"
+        alt=""
+        class="w-8 h-8 rounded-lg"
+      />
+      <img
+        :src="`http://ddragon.leagueoflegends.com/cdn/12.10.1/img/item/${currentSum.item5}.png`"
+        alt="#"
+        class="w-8 h-8 rounded-lg"
+      />
+    </div>
+
+    <div class="flex text-sm cursor-pointer">
+      <div class="flex-col w-20 truncate ... mr-4">
+        <p class="opacity-80 hover:opacity-100" v-for="sum in teamBlue">
+          {{ sum.summonerName }}
+        </p>
+      </div>
+      <div class="flex-col w-20 overflow-hidden truncate ...">
+        <p class="opacity-80 hover:opacity-100" v-for="sum in teamRed">
+          {{ sum.summonerName }}
+        </p>
+      </div>
+    </div>
   </main>
 </template>
-
-<!-- <div class="flex flex-col">
-      <p v-for="sum in teamBlue">{{ sum.summonerName }}</p>
-    </div>
-    <div class="flex flex-col">
-      <p v-for="sum in teamRed">{{ sum.summonerName }}</p>
-</div> -->

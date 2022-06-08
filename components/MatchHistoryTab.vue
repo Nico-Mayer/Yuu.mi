@@ -104,7 +104,7 @@ onMounted(() => {
     </svg>
   </div>
   <main
-    class="p-8"
+    class="px-8 py-4"
     v-if="matchHistData"
     v-for="(match, index) in matchHistData"
   >

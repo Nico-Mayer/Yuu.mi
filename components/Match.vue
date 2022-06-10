@@ -1,5 +1,5 @@
 <script setup>
-// Variables
+// Variable
 const { matchData, index, sumId } = defineProps(["matchData", "index", "sumId"])
 const teamBlue = ref(getTeam(100))
 const teamRed = ref(getTeam(200))

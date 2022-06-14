@@ -3,10 +3,9 @@
 const { matchData, index, sumId } = defineProps(["matchData", "index", "sumId"])
 const teamBlue = ref(getTeam(100))
 const teamRed = ref(getTeam(200))
-
 const currentSum = ref(getSum(sumId))
 const win = currentSum.value.win
-
+const router = useRouter()
 const date = computed(() => {
   const hours = Math.round((Date.now() - matchData.gameCreation) / 1000 / 3600)
   const days = Math.round(
@@ -27,8 +26,6 @@ const duration = computed(() => {
   const seconds = matchData.gameDuration - minutes * 60
   return `${minutes}m ${seconds}s`
 })
-
-console.log(currentSum.value)
 
 // Functions
 function getTeam(teamId) {
@@ -62,6 +59,9 @@ function getQType() {
     case 400:
       return "normal"
   }
+}
+async function findSum(id) {
+  router.push(`/sumPage-${id}`)
 }
 // Hooks
 </script>
@@ -154,7 +154,11 @@ function getQType() {
 
     <div class="flex text-sm cursor-pointer">
       <div class="flex-col w-20 truncate ... mr-4">
-        <div class="flex opacity-80 hover:opacity-100" v-for="sum in teamBlue">
+        <div
+          class="flex opacity-80 hover:opacity-100"
+          v-for="sum in teamBlue"
+          @click="findSum(sum.summonerId)"
+        >
           <img
             class="w-5 h-5 rounded-full mr-1"
             :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${sum.championId}.png`"
@@ -165,7 +169,11 @@ function getQType() {
       </div>
 
       <div class="flex-col w-20 truncate ...">
-        <div class="flex opacity-80 hover:opacity-100" v-for="sum in teamRed">
+        <div
+          class="flex opacity-80 hover:opacity-100"
+          v-for="sum in teamRed"
+          @click="findSum(sum.summonerId)"
+        >
           <img
             class="w-5 h-5 rounded-full mr-1"
             :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${sum.championId}.png`"

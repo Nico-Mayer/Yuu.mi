@@ -13,7 +13,7 @@ const { data: rankData, error: rankDataErr } = await useFetch(
   `${riotUrl}league/v4/entries/by-summoner/${sumId.value}?api_key=${apiKey}`
 )
 
-const matchIdsCallString = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${sumData.value.puuid}/ids?start=0&count=10&api_key=${apiKey}`
+const matchIdsCallString = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${sumData.value.puuid}/ids?start=0&count=7&api_key=${apiKey}`
 const { data: matchHistIds, error: matchHistIdsErr } = await useFetch(
   matchIdsCallString
 )

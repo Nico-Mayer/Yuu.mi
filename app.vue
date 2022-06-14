@@ -31,6 +31,6 @@ async function findSummoner(name) {
     class="font-mono text-font0 outline outline-offset-[-17px] outline-2 outline-bg0h p-4 min-h-screen"
   >
     <Navbar @findSum="findSummoner" />
-    <NuxtPage />
+    <NuxtPage @findSum="findSummoner" />
   </div>
 </template>

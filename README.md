@@ -30,10 +30,10 @@
  <p align="center">
     An OP.gg inspired League of Legends Stat tracking site using the riot games API
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://yuu-mi.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·

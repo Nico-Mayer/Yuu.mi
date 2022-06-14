@@ -29,14 +29,14 @@
 
  <p align="center">
     An OP.gg inspired League of Legends Stat tracking site using the riot games API
-    <br />
     
-    <br />
-    <br />
+    
+    
+    
     <a href="https://yuu-mi.vercel.app/">View Demo</a>
-    ·
+    
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
+    
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
   </p>
 </div>

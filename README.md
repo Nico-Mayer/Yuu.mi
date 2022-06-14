@@ -27,15 +27,17 @@
     <img src="logo.png" alt="Logo">
   </a>
 
-  <p align="center">
-    An OP.gg Inspired League of Legends Stat Tracking Site using the Riot Games API
-    
+ <p align="center">
+    An OP.gg inspired League of Legends Stat tracking site using the riot games API
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
-    <a href="https://github.com/nico-mayer/yuu.mi/issues">Report Bug</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
-    
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
   </p>
 </div>
 

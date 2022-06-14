@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="flex flex-col items-center border-r border-bg0h px-2 pt-8 w-80">
+  <main class="flex flex-col items-center border-r border-bg0h px-2 w-80">
     <img
       class="w-20 h-20 rounded-full mb-8"
       :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${sumData.profileIconId}.jpg`"

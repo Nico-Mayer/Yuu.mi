@@ -70,7 +70,7 @@ function getQType() {
   <main
     :class="`flex p-4 border-opacity-50 justify-between ${
       win ? 'border-gruvBlue' : 'border-gruvRed'
-    } hover:border-opacity-100 border border-l-4 transition-all duration-250 `"
+    } hover:border-opacity-100 border border-l-4 transition-all duration-250 my-4`"
   >
     <div class="mr-4">
       <p

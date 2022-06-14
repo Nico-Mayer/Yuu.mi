@@ -1,5 +1,5 @@
 <script setup>
-// Variables
+// Variable
 const router = useRouter()
 const sumData = ref({
   id: "",
